@@ -5,7 +5,7 @@ spring:
     name: flight-bookings
   data:
     mongodb:
-      uri: mongodb+srv://dhiraj2k10_db_user:gO9Ky9TRdPnjO9lK@learnprogramming.7yxb6n7.mongodb.net/Flights?retryWrites=true&w=majority
+      uri: mongodb+srv://dhiraj2k10_db_user:xxxxxxx@learnprogramming.7yxb6n7.mongodb.net/Flights?retryWrites=true&w=majority
       auto-index-creation: true
 
 management:
