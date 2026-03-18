@@ -57,8 +57,8 @@ public class FlightServiceImpl implements FlightService {
     }
 
     public List<FlightInfoDto> findAllFlights(){
-        List<FlightInformation> allflights = flightRepository.findAll();
-        return mapper.toFlightDtoList(allflights);
+        List<FlightInformation> flights = flightRepository.findAll();
+        return mapper.toFlightDtoList(flights);
     }
 
     public List<FlightInformation> findByStatus(String status){

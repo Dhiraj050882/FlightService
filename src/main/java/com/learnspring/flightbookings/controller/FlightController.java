@@ -6,6 +6,7 @@ import com.learnspring.flightbookings.dto.ResponseDto;
 import com.learnspring.flightbookings.entity.FlightInformation;
 import com.learnspring.flightbookings.service.FlightService;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,18 +31,21 @@ public class FlightController {
     }
 
     @GetMapping("/")
-    public List<FlightInfoDto> getAllFlights(){
-        return service.findAllFlights();
+    public ResponseEntity<List<FlightInfoDto>> getAllFlights(){
+        List<FlightInfoDto> allFlights = service.findAllFlights();
+        return ResponseEntity.status(HttpStatus.OK).body(allFlights);
     }
 
     @GetMapping("/status/{status}")
-    public List<FlightInformation> flightsByStatus(@PathVariable String status){
-        return service.findByStatus(status);
+    public ResponseEntity<List<FlightInformation>> flightsByStatus(@PathVariable String status){
+        List<FlightInformation> byStatus = service.findByStatus(status);
+        return ResponseEntity.status(HttpStatus.OK).body(byStatus);
     }
 
     @GetMapping("/{flightNumber}")
-    public FlightInformation findByFlightNumber(@PathVariable String flightNumber){
-        return service.findByFlightNumber(flightNumber);
+    public ResponseEntity<FlightInformation> findByFlightNumber(@PathVariable String flightNumber){
+        FlightInformation byFlightNumber = service.findByFlightNumber(flightNumber);
+        return ResponseEntity.status(HttpStatus.OK).body(byFlightNumber);
     }
 
     @PutMapping("/modify-info")

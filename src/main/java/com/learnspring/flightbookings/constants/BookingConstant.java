@@ -11,6 +11,6 @@ public class BookingConstant {
     public static final String STATUS_200 = "200";
     public static final String MESSAGE_200="Request Processed Successfully";
     public static final String STATUS_500 = "500";
-    public static final String MESSAGE_500 ="An Error Occurred while processing your request. Please try again or reach out to Dev team at FlightInfoAppSupport@flightsapp.com ";
+    public static final String MESSAGE_500 ="An Error Occurred while processing your request. Please try again or reach out to Dev team at BookingInfoAppSupport@flightsapp.com ";
 
 }

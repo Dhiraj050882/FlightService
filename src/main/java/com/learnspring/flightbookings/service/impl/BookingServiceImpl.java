@@ -32,6 +32,9 @@ public class BookingServiceImpl implements BookingService {
     public BookingInfoDto addFlight(BookingInfoDto information) {
 
         FlightInformation flightInformation = flightRepository.findByFlightNumber(information.getFlightNumber());
+        if(flightInformation == null){
+            throw new ResourceNotFoundException("Booking", "Flight Number",information.getFlightNumber());
+        }
         Booking_Information savedBooking = bookingRepository.save(bookingMapper.toBookingEntity(information));
         flightInformation.getBookingInformation().add(savedBooking);
         flightRepository.save(flightInformation);
@@ -47,6 +50,9 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<BookingInfoDto> findBookingsByFlightNumber(String flightNumber) {
         List<Booking_Information> bookingsByFightNumber = bookingRepository.findByFlightNumber(flightNumber);
+        if(bookingsByFightNumber.isEmpty()){
+            throw new ResourceNotFoundException("Booking","Flight Number",flightNumber);
+        }
         return bookingMapper.toBookingDtoList(bookingsByFightNumber);
     }
 
